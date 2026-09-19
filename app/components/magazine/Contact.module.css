@@ -1,0 +1,98 @@
+.page {
+  position: relative;
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(66, 213, 245, 0.1),
+      transparent 25%
+    ),
+    #050f19;
+  color: #f8fafc;
+}
+
+.top {
+  position: absolute;
+  top: 8%;
+  left: 9%;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 47%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  text-align: center;
+}
+
+.kicker {
+  margin: 0 0 20px;
+  color: #42d5f5;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+}
+
+.center h1 {
+  margin: 0;
+  font-size: 90px;
+  line-height: 0.84;
+  letter-spacing: -0.07em;
+}
+
+.center h1 span {
+  color: #42d5f5;
+}
+
+.description {
+  max-width: 470px;
+  margin: 32px auto 0;
+  color: #8294a3;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.contact {
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.contact strong {
+  font-size: 12px;
+}
+
+.contact span,
+.contact a {
+  color: #8495a4;
+  font-size: 9px;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  color: #42d5f5;
+}
+
+.bottom {
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  bottom: 8%;
+  padding-top: 18px;
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  color: rgba(248, 250, 252, 0.45);
+  font-size: 7px;
+  letter-spacing: 0.16em;
+}
+
+.bottom span {
+  text-align: center;
+}
+
+.bottom div:last-child {
+  text-align: right;
+}

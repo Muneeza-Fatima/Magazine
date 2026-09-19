@@ -1,0 +1,158 @@
+.page {
+  position: relative;
+  background: #f3f7f9;
+  color: #071522;
+}
+
+.left {
+  position: absolute;
+  left: 9%;
+  top: 9%;
+  width: 38%;
+  z-index: 5;
+}
+
+.left h2 {
+  margin: 28px 0 0;
+  font-size: 58px;
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+}
+
+.left h2 span {
+  color: #168bd1;
+}
+
+.left > p {
+  max-width: 330px;
+  margin-top: 26px;
+  color: #637383;
+  font-size: 10px;
+  line-height: 1.75;
+}
+
+.statement {
+  margin-top: 35px;
+  padding-left: 18px;
+  border-left: 1px solid #168bd1;
+  max-width: 330px;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.network {
+  position: absolute;
+  width: 55%;
+  height: 65%;
+  right: -2%;
+  top: 20%;
+}
+
+.core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #071522;
+  color: #42d5f5;
+  font-size: 24px;
+  font-weight: 800;
+  box-shadow: 0 0 80px rgba(22, 139, 209, 0.16);
+}
+
+.orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgba(22, 139, 209, 0.18);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.orbitOne {
+  width: 350px;
+  height: 350px;
+}
+
+.orbitTwo {
+  width: 520px;
+  height: 520px;
+}
+
+.location {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 7px;
+}
+
+.location strong {
+  display: block;
+  font-size: 8px;
+}
+
+.location small {
+  display: block;
+  margin-top: 3px;
+  color: #738392;
+  font-size: 6px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #168bd1;
+  box-shadow: 0 0 12px rgba(22, 139, 209, 0.5);
+}
+
+.location0 {
+  left: 51%;
+  top: 28%;
+}
+
+.location1 {
+  left: 31%;
+  top: 38%;
+}
+
+.location2 {
+  left: 44%;
+  top: 8%;
+}
+
+.location3 {
+  left: 14%;
+  top: 46%;
+}
+
+.location4 {
+  left: 43%;
+  top: 84%;
+}
+
+.location5 {
+  left: 67%;
+  top: 20%;
+}
+
+.location6 {
+  left: 76%;
+  top: 44%;
+}
+
+.location7 {
+  left: 72%;
+  top: 69%;
+}
+
+.location8 {
+  left: 18%;
+  top: 69%;
+}

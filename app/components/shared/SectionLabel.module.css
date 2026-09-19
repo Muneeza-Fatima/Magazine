@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(248, 250, 252, 0.72);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.number {
+  color: #42d5f5;
+}
+
+.line {
+  width: 34px;
+  height: 1px;
+  background: rgba(66, 213, 245, 0.45);
+}
+
+.label {
+  white-space: nowrap;
+}

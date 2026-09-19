@@ -1,51 +1,79 @@
 .page {
-  position: relative;
-  background: #f3f7f9;
-  color: #071522;
+  background:
+    radial-gradient(
+      70% 50% at 50% 58%,
+      rgba(11, 143, 129, 0.16),
+      transparent 60%
+    ),
+    var(--ink-900);
 }
 
-.left {
-  position: absolute;
-  left: 9%;
-  top: 9%;
-  width: 38%;
-  z-index: 5;
+.head {
+  margin-top: 9mm;
 }
 
-.left h2 {
-  margin: 28px 0 0;
-  font-size: 58px;
-  line-height: 0.92;
-  letter-spacing: -0.06em;
+.title {
+  margin: 18mm 0 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 30pt;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--paper);
 }
 
-.left h2 span {
-  color: #168bd1;
+.intro {
+  margin-top: 6mm;
+  max-width: 148mm;
 }
 
-.left > p {
-  max-width: 330px;
-  margin-top: 26px;
-  color: #637383;
-  font-size: 10px;
-  line-height: 1.75;
-}
-
-.statement {
-  margin-top: 35px;
-  padding-left: 18px;
-  border-left: 1px solid #168bd1;
-  max-width: 330px;
-  font-size: 10px;
-  line-height: 1.7;
-}
+/* --- Orbit diagram --- */
 
 .network {
+  position: relative;
+  margin-top: 8mm;
+  height: 112mm;
+}
+
+/* Photograph sits behind the orbits, heavily faded so the diagram reads. */
+.networkPhoto {
   position: absolute;
-  width: 55%;
-  height: 65%;
-  right: -2%;
-  top: 20%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 118mm;
+  height: 118mm;
+  border-radius: 50%;
+  opacity: 0.4;
+  mask-image: radial-gradient(circle, #000 38%, transparent 72%);
+  -webkit-mask-image: radial-gradient(circle, #000 38%, transparent 72%);
+}
+
+.orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+}
+
+.orbitOne {
+  width: 46mm;
+  height: 46mm;
+  border-color: rgba(96, 208, 196, 0.26);
+}
+
+.orbitTwo {
+  width: 74mm;
+  height: 74mm;
+}
+
+.orbitThree {
+  width: 102mm;
+  height: 102mm;
+  border-style: dashed;
+  border-color: rgba(167, 188, 205, 0.1);
 }
 
 .core {
@@ -53,106 +81,124 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
+  width: 26mm;
+  height: 26mm;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
-  background: #071522;
-  color: #42d5f5;
-  font-size: 24px;
-  font-weight: 800;
-  box-shadow: 0 0 80px rgba(22, 139, 209, 0.16);
+  border: 1px solid var(--rule-teal);
+  background: var(--ink-850);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.orbit {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  border: 1px solid rgba(22, 139, 209, 0.18);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
+.coreMark {
+  width: 12mm;
+  height: auto;
+  object-fit: contain;
 }
 
-.orbitOne {
-  width: 350px;
-  height: 350px;
-}
-
-.orbitTwo {
-  width: 520px;
-  height: 520px;
-}
-
-.location {
+.node {
   position: absolute;
   display: flex;
-  gap: 8px;
   align-items: center;
-  font-size: 7px;
+  gap: 6px;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
 
-.location strong {
-  display: block;
-  font-size: 8px;
-}
-
-.location small {
-  display: block;
-  margin-top: 3px;
-  color: #738392;
-  font-size: 6px;
-}
-
-.dot {
-  width: 6px;
-  height: 6px;
+.dotSolid,
+.dotHollow {
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
-  background: #168bd1;
-  box-shadow: 0 0 12px rgba(22, 139, 209, 0.5);
+  flex: 0 0 auto;
 }
 
-.location0 {
-  left: 51%;
-  top: 28%;
+.dotSolid {
+  background: var(--teal-300);
 }
 
-.location1 {
-  left: 31%;
-  top: 38%;
+.dotHollow {
+  border: 1px solid var(--teal-500);
 }
 
-.location2 {
-  left: 44%;
-  top: 8%;
+.nodeName {
+  font-size: 7.4pt;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mist);
 }
 
-.location3 {
-  left: 14%;
-  top: 46%;
+/* Inner ring — direct operations */
+.nodeOne {
+  left: 50%;
+  top: 14%;
 }
 
-.location4 {
-  left: 43%;
+.nodeTwo {
+  left: 78%;
+  top: 27%;
+}
+
+.nodeThree {
+  left: 86%;
+  top: 55%;
+}
+
+.nodeFour {
+  left: 62%;
+  top: 80%;
+}
+
+.nodeFive {
+  left: 30%;
   top: 84%;
 }
 
-.location5 {
-  left: 67%;
-  top: 20%;
+/* Outer ring — strategic partnerships */
+.nodeSix {
+  left: 12%;
+  top: 62%;
 }
 
-.location6 {
-  left: 76%;
-  top: 44%;
+.nodeSeven {
+  left: 9%;
+  top: 36%;
 }
 
-.location7 {
-  left: 72%;
-  top: 69%;
+.nodeEight {
+  left: 22%;
+  top: 16%;
 }
 
-.location8 {
-  left: 18%;
-  top: 69%;
+.nodeNine {
+  left: 68%;
+  top: 8%;
+}
+
+/* --- Footer note --- */
+
+.footer {
+  margin-top: auto;
+  margin-bottom: 14mm;
+  padding-top: 7mm;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.footerText {
+  margin: 0;
+  max-width: 154mm;
+  font-family: var(--font-display);
+  font-size: 12.5pt;
+  line-height: 1.52;
+  color: var(--paper);
+}
+
+.footerText em {
+  font-style: italic;
+  background: linear-gradient(135deg, var(--teal-200), var(--teal-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

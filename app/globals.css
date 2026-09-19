@@ -1,22 +1,51 @@
+/* ==========================================================================
+   BH VENTURES — Magazine design system
+   Palette sampled directly from the brand logo:
+   navy #0e1b2b · teal light #60d0c4 · teal deep #0b8f81 · paper #feffff
+   ========================================================================== */
+
 :root {
-  --navy-950: #050f19;
-  --navy-900: #071522;
-  --navy-800: #0b1f33;
-  --navy-700: #102b43;
+  /* --- Ink (brand navy family) --- */
+  --ink-950: #050d16;
+  --ink-900: #08131f;
+  --ink-850: #0e1b2b; /* the logo's own background */
+  --ink-800: #142438;
+  --ink-750: #1a2e46;
+  --ink-700: #223a56;
 
-  --white: #f8fafc;
-  --muted: #94a3b8;
-  --muted-dark: #64748b;
+  /* --- Teal (the monogram gradient) --- */
+  --teal-200: #a8e9e0;
+  --teal-300: #60d0c4; /* logo highlight */
+  --teal-400: #34b8a9;
+  --teal-500: #0b8f81; /* logo shadow */
+  --teal-600: #076d62;
 
-  --cyan: #42d5f5;
-  --cyan-light: #8deBff;
-  --blue: #168bd1;
+  /* --- Neutrals --- */
+  --paper: #fdfefe;
+  --mist: #a7bccd;
+  --mist-dim: #6b8296;
+  --mist-faint: #46596b;
 
-  --border: rgba(148, 163, 184, 0.16);
-  --border-bright: rgba(66, 213, 245, 0.28);
+  /* --- Lines --- */
+  --rule: rgba(167, 188, 205, 0.16);
+  --rule-strong: rgba(167, 188, 205, 0.3);
+  --rule-teal: rgba(96, 208, 196, 0.34);
 
+  /* --- Page geometry --- */
   --page-width: 210mm;
   --page-height: 297mm;
+  --margin-x: 17mm;
+  --margin-y: 16mm;
+
+  /* --- Type ---
+     --font-sans and --font-display are defined by next/font in layout.tsx
+     (Inter and Playfair Display, self-hosted with their own fallbacks).
+     Do NOT redeclare them here: :root and the generated font class have
+     equal specificity, so a value here wins on source order and the real
+     webfonts never load. */
+
+  /* --- Motion --- */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 * {
@@ -24,19 +53,16 @@
 }
 
 html {
-  background: #02070d;
+  background: var(--ink-950);
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #02070d;
-  color: var(--white);
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+  background: var(--ink-950);
+  color: var(--paper);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -51,13 +77,196 @@ img {
 }
 
 ::selection {
-  background: rgba(66, 213, 245, 0.25);
-  color: white;
+  background: rgba(96, 208, 196, 0.28);
+  color: var(--paper);
 }
 
-/* =========================================
-   PRINT / PDF SYSTEM
-========================================= */
+/* ==========================================================================
+   Shared page primitives
+   ========================================================================== */
+
+/* Every section is one physical A4 leaf.
+   position/overflow live in the base rule, not inside @media screen —
+   .pageInner is absolutely positioned and needs a positioned ancestor in
+   print too, or every page's content collapses onto the body. */
+.magazinePage {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink-900);
+}
+
+@media screen {
+  .magazinePage {
+    width: var(--page-width);
+    height: var(--page-height);
+    min-height: var(--page-height);
+    flex: 0 0 auto;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  }
+}
+
+/* The editorial text column, inset by the page margin. */
+.pageInner {
+  position: absolute;
+  inset: var(--margin-y) var(--margin-x);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hairline that opens most spreads. */
+.ruleTop {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--teal-400),
+    var(--rule-teal) 38%,
+    transparent 78%
+  );
+}
+
+/* Display headline — the magazine's editorial voice. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--paper);
+  margin: 0;
+}
+
+/* Body copy. */
+.copy {
+  font-size: 10.5pt;
+  line-height: 1.72;
+  color: var(--mist);
+  margin: 0;
+}
+
+.copy strong {
+  color: var(--paper);
+  font-weight: 600;
+}
+
+/* Small caps eyebrow. */
+.eyebrow {
+  font-size: 7.5pt;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--teal-300);
+  margin: 0;
+}
+
+/* Pull quote, set in the display serif. */
+.pullQuote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 17pt;
+  line-height: 1.42;
+  color: var(--paper);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Photography
+   Every photograph is duotoned into the brand palette: the image supplies
+   luminance only, the teal→navy gradient underneath supplies the colour.
+   This is what makes a set of unrelated stock frames read as one magazine.
+   ========================================================================== */
+
+.duotone {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(140deg, #0b8f81 0%, #10344a 48%, #0e1b2b 100%);
+}
+
+.duotone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  mix-blend-mode: luminosity;
+  opacity: 0.94;
+}
+
+/* Warmer, brighter variant for hero frames. */
+.duotoneBright {
+  background: linear-gradient(140deg, #16b3a1 0%, #12405c 55%, #0e1b2b 100%);
+}
+
+/* Scrims for type legibility over a photograph. */
+.scrimBottom::after,
+.scrimFull::after,
+.scrimLeft::after,
+.scrimTopBottom::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.scrimBottom::after {
+  background: linear-gradient(
+    180deg,
+    transparent 30%,
+    rgba(5, 13, 22, 0.72) 76%,
+    rgba(5, 13, 22, 0.95) 100%
+  );
+}
+
+.scrimTopBottom::after {
+  background: linear-gradient(
+    180deg,
+    rgba(5, 13, 22, 0.8) 0%,
+    rgba(5, 13, 22, 0.15) 22%,
+    transparent 40%,
+    rgba(5, 13, 22, 0.75) 78%,
+    rgba(5, 13, 22, 0.96) 100%
+  );
+}
+
+.scrimFull::after {
+  background:
+    linear-gradient(180deg, rgba(5, 13, 22, 0.58), rgba(5, 13, 22, 0.82)),
+    radial-gradient(
+      75% 55% at 50% 45%,
+      transparent,
+      rgba(5, 13, 22, 0.55) 100%
+    );
+}
+
+.scrimLeft::after {
+  background: linear-gradient(
+    90deg,
+    rgba(5, 13, 22, 0.94) 6%,
+    rgba(5, 13, 22, 0.55) 46%,
+    transparent 82%
+  );
+}
+
+/* Caption set beside or beneath a frame. */
+.caption {
+  font-size: 6.8pt;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--mist-faint);
+  margin: 0;
+}
+
+/* Teal gradient text, echoing the monogram. */
+.tealText {
+  background: linear-gradient(135deg, var(--teal-200), var(--teal-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ==========================================================================
+   Print / PDF
+   ========================================================================== */
 
 @page {
   size: A4 portrait;
@@ -69,7 +278,7 @@ img {
   body {
     width: 210mm;
     min-width: 210mm;
-    background: white !important;
+    background: var(--ink-900) !important;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
@@ -89,6 +298,7 @@ img {
     max-height: 297mm !important;
     margin: 0 !important;
     padding: 0 !important;
+    box-shadow: none !important;
     break-after: page;
     page-break-after: always;
     overflow: hidden;
@@ -99,21 +309,6 @@ img {
     page-break-after: auto;
   }
 }
-
-@media screen {
-  .magazinePage {
-    width: var(--page-width);
-    height: var(--page-height);
-    min-height: var(--page-height);
-    position: relative;
-    overflow: hidden;
-    flex: 0 0 auto;
-  }
-}
-
-/* =========================================
-   ACCESSIBILITY
-========================================= */
 
 @media (prefers-reduced-motion: reduce) {
   *,

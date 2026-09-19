@@ -1,0 +1,116 @@
+.page {
+  background: var(--ink-900);
+}
+
+/* Photograph holds the right third, bleeding off three edges. */
+.photo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 74mm;
+}
+
+.photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    var(--ink-900) 0%,
+    rgba(8, 19, 31, 0.45) 26%,
+    transparent 62%
+  );
+}
+
+.content {
+  position: absolute;
+  left: var(--margin-x);
+  top: var(--margin-y);
+  width: 108mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 20mm 0 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 38pt;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  color: var(--paper);
+}
+
+.lede {
+  margin-top: 10mm;
+  font-size: 12pt;
+  line-height: 1.62;
+  color: var(--paper);
+  padding-top: 7mm;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.text {
+  margin-top: 5mm;
+}
+
+/* --- Domain list --- */
+
+.domains {
+  margin-top: 11mm;
+}
+
+.domainsTitle {
+  font-size: 6.8pt;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--mist-faint);
+}
+
+.domainList {
+  list-style: none;
+  margin: 4mm 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8mm;
+}
+
+.domain {
+  padding: 2.6mm 0;
+  border-top: 1px solid var(--rule);
+  font-size: 8.8pt;
+  color: var(--mist);
+}
+
+/* --- Closing statement --- */
+
+.statement {
+  position: absolute;
+  left: var(--margin-x);
+  bottom: 20mm;
+  width: 108mm;
+  padding-top: 6mm;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.statementText {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 18pt;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+}
+
+.statementText em {
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(135deg, var(--teal-200), var(--teal-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

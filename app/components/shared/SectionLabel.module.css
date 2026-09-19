@@ -1,24 +1,25 @@
 .wrapper {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  color: rgba(248, 250, 252, 0.72);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 9px;
-  font-weight: 600;
+  align-items: baseline;
+  gap: 14px;
 }
 
 .number {
-  color: #42d5f5;
-}
-
-.line {
-  width: 34px;
-  height: 1px;
-  background: rgba(66, 213, 245, 0.45);
+  font-family: var(--font-display);
+  font-size: 13pt;
+  font-weight: 600;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--teal-200), var(--teal-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .label {
+  font-size: 7.5pt;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--mist-dim);
   white-space: nowrap;
 }

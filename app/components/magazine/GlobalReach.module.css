@@ -1,145 +1,156 @@
 .page {
-  position: relative;
-  background: #050f19;
-  color: #f8fafc;
-  overflow: hidden;
+  background: var(--ink-900);
 }
 
-.top {
+/* Earth band across the top, bleeding off three edges. */
+.photo {
   position: absolute;
-  z-index: 3;
-  top: 8%;
-  left: 9%;
-  max-width: 450px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 92mm;
 }
 
-.top h2 {
-  margin: 30px 0 0;
-  font-size: 52px;
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-}
-
-.top h2 span {
-  color: #42d5f5;
-}
-
-.top p {
-  max-width: 400px;
-  margin-top: 22px;
-  color: #91a2b1;
-  font-size: 11px;
-  line-height: 1.7;
-}
-
-.mapArea {
+.head {
   position: absolute;
-  left: 4%;
-  right: 4%;
-  top: 28%;
-  height: 48%;
-  overflow: hidden;
+  top: 16mm;
+  left: var(--margin-x);
+  right: var(--margin-x);
+  z-index: 2;
 }
 
-.map {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.7;
-  mix-blend-mode: screen;
-  filter: grayscale(1) contrast(1.2);
+.title {
+  margin: 10mm 0 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 34pt;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--paper);
 }
 
-.mapArea::after {
-  content: "";
+.body {
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(
-      circle at 48% 52%,
-      rgba(66, 213, 245, 0.15),
-      transparent 20%
-    ),
-    linear-gradient(
-      90deg,
-      #050f19 0%,
-      transparent 16%,
-      transparent 84%,
-      #050f19 100%
-    );
+  left: var(--margin-x);
+  right: var(--margin-x);
+  top: 96mm;
+  bottom: 23mm;
+  display: flex;
+  flex-direction: column;
 }
 
-.marker {
-  position: absolute;
-  z-index: 4;
-  padding: 5px 7px;
-  border: 1px solid rgba(66, 213, 245, 0.45);
-  background: rgba(5, 15, 25, 0.8);
-  color: #8debff;
-  font-size: 6px;
-  letter-spacing: 0.14em;
+.intro {
+  max-width: 130mm;
 }
 
-.uae {
-  left: 59%;
-  top: 58%;
+/* --- Country columns --- */
+
+.columns {
+  margin-top: 11mm;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12mm;
 }
 
-.pakistan {
-  left: 64%;
-  top: 51%;
+.column {
+  border-top: 1px solid var(--rule-strong);
+  padding-top: 5mm;
 }
 
-.uk {
-  left: 45%;
-  top: 30%;
+.columnHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.us {
-  left: 22%;
-  top: 44%;
+.dotSolid,
+.dotHollow {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex: 0 0 auto;
 }
 
-.france {
-  left: 46%;
-  top: 39%;
+.dotSolid {
+  background: var(--teal-300);
 }
+
+.dotHollow {
+  border: 1px solid var(--teal-500);
+}
+
+.columnTitle {
+  flex: 1;
+  font-size: 7.2pt;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--mist-dim);
+}
+
+.columnCount {
+  font-family: var(--font-display);
+  font-size: 10pt;
+  font-weight: 600;
+  color: var(--teal-400);
+}
+
+.list {
+  list-style: none;
+  margin: 5mm 0 0;
+  padding: 0;
+}
+
+.item {
+  padding: 3mm 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 10pt;
+  color: var(--paper);
+}
+
+.note {
+  margin-top: 10mm;
+  max-width: 152mm;
+}
+
+/* --- Statistic band --- */
 
 .stats {
-  position: absolute;
-  left: 9%;
-  right: 9%;
-  bottom: 9%;
+  margin-top: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  border-top: 1px solid var(--rule-strong);
+  padding-top: 6mm;
 }
 
 .stat {
-  padding: 18px 18px 0 0;
-  border-right: 1px solid rgba(148, 163, 184, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 2.4mm;
+  padding-left: 6mm;
+  border-left: 1px solid var(--rule);
 }
 
-.stat:not(:first-child) {
-  padding-left: 18px;
+.stat:first-child {
+  padding-left: 0;
+  border-left: none;
 }
 
-.stat:last-child {
-  border-right: 0;
+.statValue {
+  font-family: var(--font-display);
+  font-size: 22pt;
+  font-weight: 600;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--teal-200), var(--teal-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.stat strong {
-  display: block;
-  font-size: 29px;
-  color: #f8fafc;
-}
-
-.stat span {
-  display: block;
-  margin-top: 5px;
-  font-size: 7px;
-  line-height: 1.5;
-  color: #7f91a0;
+.statLabel {
+  font-size: 6.6pt;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  color: var(--mist-dim);
 }

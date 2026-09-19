@@ -1,62 +1,67 @@
 import SectionLabel from "../shared/SectionLabel";
 import PageNumber from "../shared/PageNumber";
+
 import styles from "./ValueCreation.module.css";
 
-const principles = [
+const PILLARS = [
   {
-    number: "01",
-    title: "Strategic Market Expansion",
-    text: "Identifying high-potential markets and building the on-ramps into them.",
+    no: "01",
+    name: "Strategic Market Expansion",
+    text: "Identifying high-potential markets before they're obvious, and building the on-ramps into them.",
   },
   {
-    number: "02",
-    title: "Diversified Business Ventures",
-    text: "Constructing businesses across trading, technology, digital solutions and emerging industries.",
+    no: "02",
+    name: "Diversified Business Ventures",
+    text: "Constructing and supporting businesses across trading, technology, digital solutions, and emerging industries — so growth in one discipline strengthens the others.",
   },
   {
-    number: "03",
-    title: "Technology-Driven Innovation",
-    text: "Applying AI, Web3 and modern digital infrastructure as working tools.",
+    no: "03",
+    name: "Technology-Driven Innovation",
+    text: "Applying AI, Web3, and modern digital infrastructure not as buzzwords, but as working tools inside every venture.",
   },
   {
-    number: "04",
-    title: "Trusted Global Partnerships",
-    text: "Treating relationships as long-term infrastructure rather than transactions.",
+    no: "04",
+    name: "Trusted Global Partnerships",
+    text: "Treating every partner relationship as long-term infrastructure, not a transaction.",
   },
 ];
 
 export default function ValueCreation() {
   return (
     <section className={`magazinePage ${styles.page}`}>
-      <div className={styles.header}>
-        <SectionLabel
-          number="06"
-          label="The Way We Create Value"
-        />
+      <div className="pageInner">
+        <div className="ruleTop" />
 
-        <h2>
-          Built for
-          <br />
-          <span>global growth.</span>
-        </h2>
+        <div className={styles.head}>
+          <SectionLabel number="06" label="The Way We Create Value" />
+        </div>
+
+        <h2 className={styles.title}>Built for Global Growth</h2>
+
+        <p className={`copy ${styles.intro}`}>
+          BH Ventures creates value through four disciplines, applied
+          consistently across every venture.
+        </p>
+
+        <div className={styles.list}>
+          {PILLARS.map((pillar) => (
+            <article key={pillar.no} className={styles.row}>
+              <span className={styles.no}>{pillar.no}</span>
+
+              <div className={styles.rowBody}>
+                <h3 className={styles.name}>{pillar.name}</h3>
+                <p className={styles.text}>{pillar.text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p className={styles.footer}>
+          This is not diversification for its own sake — it&rsquo;s{" "}
+          <em>a single operating model</em>, applied to ten different
+          disciplines.
+        </p>
       </div>
-
-      <div className={styles.centerMark}>BH</div>
-
-      <div className={styles.grid}>
-        {principles.map((item) => (
-          <article className={styles.item} key={item.number}>
-            <span className={styles.number}>{item.number}</span>
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
-          </article>
-        ))}
-      </div>
-
-      <p className={styles.statement}>
-        This is not diversification for its own sake — it is a
-        single operating model, applied across different disciplines.
-      </p>
 
       <PageNumber number="07" />
     </section>

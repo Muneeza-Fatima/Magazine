@@ -1,57 +1,76 @@
 import SectionLabel from "../shared/SectionLabel";
 import PageNumber from "../shared/PageNumber";
+
 import styles from "./Proof.module.css";
 
-const proof = [
-  {
-    value: "150+",
-    label: "Countries in Trading Network",
-  },
-  {
-    value: "09",
-    label: "Markets",
-  },
-  {
-    value: "05",
-    label: "Direct Operations",
-  },
-  {
-    value: "10",
-    label: "Business Disciplines",
-  },
+/* Confirmed figures. */
+const CONFIRMED = [
+  { value: "09", label: "Markets", note: "Gulf · South Asia · Europe · N. America" },
+  { value: "05", label: "Direct Operations", note: "Wholly operated by BH Ventures" },
+  { value: "10", label: "Active Ventures", note: "Under one licensed roof" },
+  { value: "150+", label: "Countries in Network", note: "Trading community reach" },
+];
+
+/* Trading-community metrics — awaiting confirmed figures from the client. */
+const PENDING = [
+  "Countries Registered",
+  "Average Payout Processing",
+  "Paid Out to Traders",
+  "Traders Worldwide",
 ];
 
 export default function Proof() {
   return (
     <section className={`magazinePage ${styles.page}`}>
-      <div className={styles.header}>
-        <SectionLabel number="08" label="Proof" />
+      <div className="pageInner">
+        <div className="ruleTop" />
 
-        <h2>
-          Not claims.
+        <div className={styles.head}>
+          <SectionLabel number="08" label="Proof" />
+        </div>
+
+        <h2 className={styles.title}>
+          Not Claims.
           <br />
-          <span>Outcomes.</span>
+          <em>Outcomes.</em>
         </h2>
 
-        <p>
-          Numbers mark the distance travelled. Final performance
-          figures should be verified and approved before publication.
+        <p className={`copy ${styles.intro}`}>
+          Numbers rarely tell the whole story, but they mark the distance
+          travelled. A licensed free-zone company. Nine markets, five of them
+          direct. Ten active ventures under one roof. A trading network built
+          for a global community, not a local one.
         </p>
-      </div>
 
-      <div className={styles.grid}>
-        {proof.map((item) => (
-          <div className={styles.item} key={item.label}>
-            <strong>{item.value}</strong>
-            <span>{item.label}</span>
+        <div className={styles.grid}>
+          {CONFIRMED.map((stat) => (
+            <div key={stat.label} className={styles.stat}>
+              <span className={styles.value}>{stat.value}</span>
+              <span className={styles.label}>{stat.label}</span>
+              <span className={styles.note}>{stat.note}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.pending}>
+          <div className={styles.pendingHead}>
+            <span className={styles.pendingTitle}>Trading Community</span>
+            <span className={styles.pendingRule} />
           </div>
-        ))}
-      </div>
 
-      <div className={styles.bottom}>
-        <span>LICENSED FREE-ZONE COMPANY</span>
-        <span>UAE BASED</span>
-        <span>GLOBAL NETWORK</span>
+          <div className={styles.pendingGrid}>
+            {PENDING.map((label) => (
+              <div key={label} className={styles.pendingItem}>
+                <span className={styles.pendingSlot} />
+                <span className={styles.pendingLabel}>{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <p className={styles.footer}>
+          Every number here is a marker, <em>not a ceiling.</em>
+        </p>
       </div>
 
       <PageNumber number="09" />

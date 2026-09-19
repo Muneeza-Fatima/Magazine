@@ -1,6 +1,6 @@
-"use client";
-
 import styles from "./MagazineShell.module.css";
+
+import ExportMenu from "../shared/ExportMenu";
 
 import Cover from "./Cover";
 import Opening from "./Opening";
@@ -18,13 +18,7 @@ export default function MagazineShell() {
   return (
     <main className={styles.magazine}>
       <div className={`${styles.toolbar} noPrint`}>
-        <button
-          type="button"
-          onClick={() => window.print()}
-          className={styles.exportButton}
-        >
-          Export / Print PDF
-        </button>
+        <ExportMenu />
       </div>
 
       <div className={styles.pages}>

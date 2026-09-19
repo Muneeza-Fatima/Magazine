@@ -5,5 +5,11 @@ interface PageNumberProps {
 }
 
 export default function PageNumber({ number }: PageNumberProps) {
-  return <span className={styles.number}>{number}</span>;
+  return (
+    <div className={styles.wrapper}>
+      <span className={styles.mark}>BH Ventures FZE LLC</span>
+      <span className={styles.rule} />
+      <span className={styles.number}>{number}</span>
+    </div>
+  );
 }

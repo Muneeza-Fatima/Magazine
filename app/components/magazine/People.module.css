@@ -1,97 +1,150 @@
 .page {
-  position: relative;
-  background: #f1f5f7;
-  color: #071522;
+  background: var(--ink-900);
 }
 
-.header {
+.photo {
   position: absolute;
-  left: 9%;
-  top: 7%;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 86mm;
 }
 
-.header h2 {
-  margin: 28px 0 0;
-  font-size: 52px;
-  line-height: 0.95;
-  letter-spacing: -0.055em;
+.head {
+  position: absolute;
+  top: 16mm;
+  left: var(--margin-x);
+  right: var(--margin-x);
+  z-index: 2;
 }
 
-.header h2 span {
-  color: #168bd1;
+.title {
+  margin: 9mm 0 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 30pt;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--paper);
 }
+
+.body {
+  position: absolute;
+  left: var(--margin-x);
+  right: var(--margin-x);
+  top: 92mm;
+  bottom: 23mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.intro {
+  max-width: 150mm;
+}
+
+/* --- Leadership slots --- */
 
 .grid {
-  position: absolute;
-  left: 9%;
-  right: 9%;
-  top: 31%;
-  height: 51%;
+  margin-top: 11mm;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 11mm;
 }
 
-.person {
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.portrait {
   position: relative;
+  aspect-ratio: 5 / 4;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background:
+    linear-gradient(
+      160deg,
+      rgba(96, 208, 196, 0.08),
+      rgba(11, 143, 129, 0.02) 60%
+    ),
+    var(--ink-850);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  background: #0b1f33;
 }
 
-.person img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(0.7) contrast(1.08);
+.portraitMark {
+  width: 18mm;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.17;
 }
 
-.overlay {
+.portraitIndex {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 38%,
-    rgba(5, 15, 25, 0.86)
-  );
+  left: 5mm;
+  bottom: 4mm;
+  font-family: var(--font-display);
+  font-size: 11pt;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--teal-500);
 }
 
-.personInfo {
-  position: absolute;
-  left: 22px;
-  right: 22px;
-  bottom: 22px;
-  color: white;
+.meta {
+  margin-top: 4mm;
+  display: flex;
+  flex-direction: column;
+  gap: 3.4mm;
 }
 
-.personInfo p {
-  margin: 0 0 5px;
-  color: #8debff;
-  font-size: 7px;
-  letter-spacing: 0.18em;
+.role {
+  font-size: 7pt;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
+  color: var(--teal-300);
 }
 
-.personInfo h3 {
+/* Rule where the leader's name will be set. */
+.nameRule {
+  height: 1px;
+  background: var(--rule-strong);
+}
+
+/* --- Philosophy quote --- */
+
+.quoteBlock {
+  margin-top: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 5mm;
+  padding-top: 6mm;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.quoteMark {
+  font-family: var(--font-display);
+  font-size: 36pt;
+  line-height: 0.7;
+  color: var(--teal-500);
+}
+
+.quote {
   margin: 0;
-  font-size: 23px;
+  font-family: var(--font-display);
+  font-size: 16pt;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--paper);
 }
 
-.personInfo blockquote {
-  max-width: 310px;
-  margin: 12px 0 0;
-  font-size: 9px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.note {
-  position: absolute;
-  left: 9%;
-  right: 9%;
-  bottom: 8%;
-  padding-top: 15px;
-  border-top: 1px solid rgba(7, 21, 34, 0.14);
-  font-size: 8px;
-  line-height: 1.6;
-  color: #70808f;
+.quote em {
+  font-style: italic;
+  font-weight: 400;
+  background: linear-gradient(135deg, var(--teal-200), var(--teal-500));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
